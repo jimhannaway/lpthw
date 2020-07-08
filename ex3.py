@@ -36,3 +36,4 @@ print("60 minutes in an hour:", 60 * 60,  "seconds in an hour")
 print("There are 24 hours in a day so half a day is 12 hours which is:", 60 * 60 *12, "seconds in a half day")
 
 # check spelling on comments and modify the file upload title
+# learning review completed
