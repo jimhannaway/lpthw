@@ -1,0 +1,3214 @@
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+BLOCKCHAIN.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Create the blockchain as a list
+blockchain = [] # initialise and initially an empty list
+
+
+# define a function to get the last value in the blockchain
+
+def get_last_blockchain_value():
+    """ index -1 accesses end of list and returns the last value of the blockchain """
+    return blockchain[-1]
+
+
+# function to add new values to the blockchain
+# passes in arguments and also uses default argument of [1]
+def add_value(transaction_amount, last_transaction=[1]):
+    """ Append a new value as well as the last blockchain value to the blockchain
+    Arguments:
+        :transaction_amount: The new amount that should be added
+        :last_transaction: The last blockchain transaction (default[1]).
+        """
+    blockchain.append([last_transaction, transaction_amount])
+
+
+
+def get_user_input():
+    """ Returns the user input, a new transaction amount, as a float """
+    return float(input("Please enter your transaction amount: "))
+
+# create nested list of blockchain values calling input function
+tx_amount = get_user_input()
+add_value(tx_amount)
+
+# sample of using keyword arguments to call the function
+tx_amount = get_user_input()
+add_value(last_transaction=get_last_blockchain_value(), transaction_amount=tx_amount)
+
+tx_amount = get_user_input()
+add_value(tx_amount, get_last_blockchain_value())
+
+print(blockchain)
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX1.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Comment lines are not interpreted
+# use the octothorpe (hash, pound) to make comments
+# Inserting # at start of line of code prevents it being run
+
+print("Hello World!")
+print("Hello Again")
+print("I like typing this.")
+print("This is fun.")
+print('Yay! Printing.')
+print("I'd much rather you 'not'.")
+print('I "said" do not touch this.')
+print("So good...here's another line")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX10.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Some escape sequences.
+# Useful for chars in difficult to type variables
+
+tabby_cat = "\tI'm tabbed in."
+persian_cat = "I'm split\non a line."
+backslash_cat = "I'm \\ a \\ cat."
+
+fat_cat = """
+I'll do a list:
+\t* Cat food
+\t* Fishies
+\t* Catnip\n\t* Grass
+"""
+
+print(tabby_cat)
+print(persian_cat)
+print(backslash_cat)
+print(fat_cat)
+
+fat_cat2 = '''
+I'll do a list:
+\t* Cat food
+\t* Fishies
+\t* Catnip\n\t* Grass
+'''
+print(fat_cat2)
+
+# Using more escape sequences
+# \'Single-quote (')
+# \" Double-quote (")
+singlequotes = "\'\'\'"
+print(singlequotes)
+print("\"Some uses for escape sequences.\"")
+print(singlequotes)
+print ("\\") #prints a single backslash
+
+# \a ASCII bell (BEL)
+print("\a Hear that?") # Sounds the Microsoft soft bell.
+
+# \b ASCII backspace (BS)
+# \f ASCII formfeed (FF)
+# \n ASCII newline (LF)
+# \r Carriage return (CR)
+# \t Horizntal tab (TAB)
+
+print("Now...\nthats a line feed")
+print("Now...thats a ba\bckspace feed taking out the a char")
+print("Now...this is what a form feed char looks like on-screen\f")
+print("Now...this is what a carriage return looks like on-screen\r")
+print("Now...this is what\thappens when\tyou tab in a string!")
+
+# \N{name] Character name in the Unicode database (Unicode only)
+# \uxxxx   Character with a 16-bit hex value xxxx
+# \uxxxxxxxx    Character with a 32-bit hex value xxxx
+# \xhh     Character with hex value hh
+# \000     Character with octal value 000
+# \v       ASCII vertical tab (VT)
+print("\N{hyphen} it's a hyphen")
+print("\u0096 cant find a 16-bit hex value!")
+print("\u00000115 cant find a 32-bit hex value!")
+print("\x6E lower-case N") # hex value for lower case n
+print("\067 it's a seven") # octal value for 7
+print("\v shold be vertical tab now!") # vertical tab
+
+print("Not covered in glory here.\n\nNot sure I am getting a good understanding!")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX11.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Asking Questions
+# Python's input() function allows user input.
+# The input() method reads a line from input, converts into a string and returns it.
+# The brackets can contain a prompt such as "Please enter your surname:"
+# or be left empty and assigned to the variable as below
+# or assigned by this method  age = input("How old are you? ").
+
+print("How old are you?", end=' ') # end=' ' prevents a newline at end of the question.
+age = input()
+print("How tall are you in metres?", end=' ')
+height = input()
+print("What weight are you in kg?", end=' ')
+weight = input()
+
+#Print f is Python 3.6 F-strings which improve formatting.
+# Strings, held within curly brackets, get passed in by the previous code
+print(f"So, you're {age} years old, {height}m tall and weigh in at {weight}kg.")
+
+food = input("What's your favourite food? ")
+drink = input("Which drink do you like best? ")
+print(f"I like {food} and {drink} too!")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX12.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Prompting People
+
+# C:\Users\Jim> python c:\users\Jim\'.\Documents\Python Scripts\lpthw\'ex12.py
+# Can also enter C:\Users\Jim> python c:\users\Jim\Documents\'.\Python Scripts\lpthw\'ex12.py
+# The part of the command entered in quotes is to allow Powershell to handle the spaces in the folder name
+
+# Python's input() function allows user input.
+# The input() method reads a line from input, converts into a string and returns it.
+# The brackets can contain a prompt such as "Please enter your surname:"
+# and assigned to the variable as in previous Ex11.
+# or rewriting ex11 below to assign by this method  age = input("How old are you? ").
+
+# We reduce the total lines of code by half
+# this gets removed print("How old are you?", end=' ') # end=' ' prevents a newline at end of the question.
+age = input("How old are you? ")
+# this gets removed print("How tall are you in metres?", end=' ')
+height = input("How tall are you in metres? ")
+# this gets removed print("What weight are you in kg?", end=' ')
+weight = input("What weight are you in kg?")
+
+#Print f is Python 3.6 F-strings which improve formatting.
+# Strings, held within curly brackets, get passed in by the previous code
+print(f"So, you're {age} years old, {height}m tall and weigh in at {weight}kg.")
+print("\n")
+food = input("What's your favourite food? ")
+drink = input("Which drink do you like best? ")
+print(f"I like {food} and {drink} too!")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX13.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Parameters, Unpacking, Variables
+
+from sys import argv
+# read the WYSS sestion for how to run this
+script, first, second, third, last = argv
+
+print("THE SCRIPT IS CALLED:", script)
+print("Your first variable is called:", first)
+print("Your second variable is called:", second)
+print("Your third variable is called:", third)
+print("Your fourth variable is called:", last)
+
+# now take some user input while the script is running
+testq = input("Is this going ok? Just type Y or N: ")
+if testq == "Y":
+    print("Glad you like it!")
+else:
+    print("Yes, hard going eh? But keep at it, you'll get there!")
+
+# Skip a line and print the list of all argv variables
+print("\n")
+print("Argument list: ", argv)
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX14.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Prompting and passing
+
+from sys import argv
+
+script, username, surname = argv
+prompt = '***> '
+
+print(f"Hi {username} {surname}, I'm the {script} script.")
+print("I'd like to ask you a few questions.")
+print(f"Do you like me {username}?")
+likes = input(prompt)
+
+print(f"Where do you live {username}?")
+lives = input(prompt)
+
+print(f"{username}, what kind of computer do you have?")
+computer = input(prompt)
+
+print(f"""
+Alright, {username} {surname} so you said {likes} about liking me.
+You live in {lives}. Not sure where that is.
+And you have a {computer} computer. Nice.
+""")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX15.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Reading files
+# Changed directory in lpthw directory which simplifies the run script command to
+# python ex15.py ex15_sample.txt
+
+# import the arguments variable
+from sys import argv
+
+# set the script and filename arguments
+script, filename = argv
+# set variable txt to open the filename passed in as an argument
+txt = open(filename)
+# print the message stating the filename and print the text held in the file
+print(f"Here's your file {filename}:")
+print(txt.read())
+# print a message prompting with an > char for re-entry of the filename
+print("Type the filename again:")
+file_again = input("> ")
+# set the txt_again variable to open the new variable holding the new filename
+txt_again = open(file_again)
+# print the text held in the file
+print(txt_again.read())
+# close files before ending script
+txt.close()
+txt_again.close()
+### txt_again= close(file_again)
+print(f"Thats both {txt_again} and {txt} filename variables now closed.")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX16.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Reading and writing files
+# Commands to remember:
+# close: Closes the file, like File > Save... in your editor.
+# read: Reads the contents of the file. You can assign the result to a variable.
+# readline: Reads jus one line of a text file.
+# truncate: Empties the fie. Wach out if you care about the file.
+# write('stuff'): Writes "stuff" to the file.
+# seek(0): Moves the read/write location to the begnning of the file.
+
+# import the arguments variable and the file read module 16a
+from sys import argv
+# import fileread16a ### removed NOT WORKING, see related comments below
+
+# set the script and filename arguments
+script, filename = argv
+
+# Initial program user info and directions.
+print(f"We are going to erase {filename}.")
+print(f"If you don't want that hit CTRL-C (^C).")
+print(f"If you do want that, hit RETURN.")
+
+# Awaits user decision, dislays a ? while waiting.
+input("?")
+
+# If the user has selected CTRL+C the program will end, otherwise it continues from here.
+# A user message is followed by setting the variable "target" to
+# open the filename supplied in the argv parameter for writing
+print("Opening the file...")
+target = open(filename, 'w')
+# User message that prevous filecontents will be erased (by .truncate)
+print("Truncating the file. GOODBYE OLD TEXT!")
+target.truncate()
+
+# Program now requests three lins of text for writing to the file.
+print("Now I will ask for three lines of text.")
+line1 = input("line1: ")
+line2 = input("line2: ")
+line3 = input("line3: ")
+
+# Write the three lines provided by the user into the file
+print("I am going to write these lines to the file.")
+# Reaplce six target.write commands with a single line.
+## target.write(line1)
+## target.write("\n")
+## target.write(line2)
+## target.write("\n")
+## target.write(line3)
+## target.write("\n")
+target.write(line1 + '\n' + line2 + '\n' + line3 + '\n')
+# and an alternative method which puts each line within quotes
+## target.write('%r\n%r\n%r\n' % (line1, line2, line3))
+
+#Now read the file using module 16a. NOT WORKING. Call fileread.py manually
+## fileread16a.read(target)
+
+# self explanatory...close the file
+# important to .close as this sets the proper file attributes.
+print("And finally, we close the file.")
+target.close
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX16A.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Reading and writing files
+# Part2. This script reads the file created in ex16.
+# Part2 is run manually/separtely after script 16 has set up test.txt file.
+
+# import the arguments variable
+## from sys import argv
+
+# set the script and filename arguments
+## script, filename = argv
+
+## target_read = open(filename)
+## print(target_read.read())
+
+## target_read.close
+
+#Part3 acts as a funtion to be called from ex16.
+def read(filename)
+    return target_read = open(filename)
+    print(target_read.read())
+    target_read.close
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX17.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# More Files: Reading and writing files
+# Commands to remember:
+    # close: Closes the file, like File > Save... in your editor.
+    # read: Reads the contents of the file. You can assign the result to a variable.
+    # readline: Reads just one line of a text file.
+    # truncate: Empties the file. Wach out if you care about the file.
+    # write('stuff'): Writes "stuff" to the file.
+    # seek(0): Moves the read/write location to the begnning of the file.
+
+# import the arguments variable and the file read module 16a
+from sys import argv
+from os.path import exists # reurns TRUE if a file exists
+
+# set the script and filename arguments
+script, from_file, to_file = argv
+
+# we could do these next two lines in one line, how?
+in_file = open(from_file)
+indata = in_file.read()
+
+# Initial program user info and directions.
+print(f"The input file is {len(indata)} bytes long.")
+
+print(f"Does the output file exist? {exists(to_file)}")
+###print("Ready, hit ENTER to continue, CTRL-C to abort.") ### this line moved to the input statement.
+
+# Awaits user decision, displays nothing () or whatever is in the brackets (Reay, hit ...).
+###input()
+input("Ready, hit ENTER to continue, CTRL-C to abort.")
+
+# open out_file for writing indata to it
+out_file = open(to_file, 'w')
+out_file.write(indata)
+
+print("Alright, all done.")
+
+# self explanatory...close both files
+# important to .close as this sets the proper file attributes.
+in_file.close()
+out_file.close()
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX18.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Names, Variables, Code, Functions
+# Functions do 3 things, they
+    # name pieces of Code the way variables name strings and numbers
+    # take arguments the way scripts take argv
+    # let you make your own "mini commands" using these first 2 things
+
+# this function is like scripts with argv
+def print_two(*args):
+    arg1, arg2 = args
+    print(f"arg1: {arg1}, arg2: {arg2}")
+
+# ok that args is actually pointless, we can do this
+def print_two_again(arg1, arg2):
+    print(f"arg1: {arg1}, arg2: {arg2}")
+
+# this takes one argument
+def print_one(arg1):
+    print(f"arg1: {arg1}")
+
+# this takes no arguments
+def print_none():
+    print("I got nothin'.")
+
+print_two("Jim", "Hannaway")
+print_two_again("James", "Hannaway")
+print_one("FirstArg")
+print_none()
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX19.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Functions & Variables
+# Functions do 3 things, they
+    # name pieces of Code the way variables name strings and numbers
+    # take arguments the way scripts take argv
+    # let you make your own "mini commands" using these first 2 things
+
+""" This shows all different ways to pass values into our
+    cheese_and_crackers function. We can pass in straight numbers,
+    variables, maths calculations, even math calculations and variables together """
+
+# Define the function 'cheese_and_crackers' to take in two values; cheese_count and boxes_of_crackers
+# Then print out the values passed into the function with sme text around them t give context and meaning.
+def cheese_and_crackers(cheese_count, boxes_of_crackers):
+    print(f"You have {cheese_count} cheeses!")
+    print(f"You have {boxes_of_crackers} boxes of crackers!")
+    print("Man that's enough for a party!")
+    print("Get a blanket. \n")
+
+# Pass two values directly into the cheese_and_crackers function
+print("We can just give the funtion numbers directly:")
+cheese_and_crackers(20, 30)
+
+# Create two other variables amount_of_cheese and amount_of_crackers,
+# assign values to them and an pass them into the cheese_and_crackers function.
+print("OR we can use variables from our script.")
+amount_of_cheese = 10
+amount_of_crackers = 50
+
+cheese_and_crackers(amount_of_cheese, amount_of_crackers)
+
+# Run cheese_and_crackers function with values created from calculations inside the function
+print("We can even do math inside too:")
+cheese_and_crackers(10 + 20, 5 + 6)
+
+# Call (run) cheese_and_crackers with its passed in values created from
+# a combination of existing variables with a math calculation
+print("And we can combine the two, variable and math:")
+cheese_and_crackers(amount_of_cheese + 100, amount_of_crackers + 1000)
+
+count = 0
+
+def function_ten_ways(numbers, letters):
+    print(count)
+    print(f"The numbers are {numbers} and the letters are {letters}.")
+
+# 1st around
+count = count + 1
+function_ten_ways(0, "No letter")
+print("No values passed this time! Doesn't work so passed in values directly!")
+
+# 2nd call
+count = count + 1
+function_ten_ways(1, "A")
+print("One value passed this time!")
+
+# 3rd call
+count = count + 1
+function_ten_ways(1+1, "A"+"B")
+print("Added values and strings passed this time!")
+
+# 4th call
+count = count + 1
+function_ten_ways("1"+"1"+"2", "A"+"B"+"C")
+print("Added strings passed as values this time!")
+
+# 5th Call
+amount_of_numbers = 10
+amount_of_letters = 26
+count = count + 1
+function_ten_ways(amount_of_numbers, amount_of_letters)
+print("Two new varaibles passed this time!")
+
+# 6th Call
+count = count + 1
+function_ten_ways(amount_of_numbers *2 , amount_of_letters *2)
+print("Two variables inclusing arithmetic operations passed this time!")
+
+# 7th Call
+count = count + 1
+function_six = function_ten_ways
+function_six(amount_of_numbers, amount_of_letters)
+print("Asssign the function to a variable and call it again! Jeez it works")
+
+# 8th Call
+count = count + 1
+function_six = function_ten_ways
+new_list = (55, "ABCDE")
+function_six(*new_list)
+print("Asssign the function to a variable with a variable number of arguments as in *args. Yip. Works!")
+
+# 9th call
+count = count + 1
+def function_seven():
+    letters1 = "JHFH"
+    numbers1 = 1509
+    function_ten_ways(numbers1, letters1)
+    print("Create a new function using the original function with new values and call the new function")
+function_seven()
+
+# 10th call
+count = count + 1
+def function_seven():
+    letters1 = "XJHFHX"
+    return letters1
+
+def function_eight():
+    numbers1 = "X" + 1509 + "X"
+    return numbers1
+
+function_ten_ways(function_seven, function_eight)
+print("Create a new function pasing in two functions.")
+
+
+# 11th call
+count = count + 1
+numbers2 = input("Input numbers: ")
+letters2 = input("Input letters: ")
+function_ten_ways(numbers2, letters2)
+print("Call the function using user input as values.")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX2.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# A comment, this is so you can read the program later.
+# Anything after the # is ignored by python.
+
+print("I could have code like this.") # and the comment after is ignored
+
+# You can also use a # to dsable or comment out code
+# print("This won't run.")
+
+print("This will run.")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX20.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+BLOCKCHAIN.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Create the blockchain as a list
+blockchain = [] # initialise and initially an empty list
+
+
+# define a function to get the last value in the blockchain
+
+def get_last_blockchain_value():
+    """ index -1 accesses end of list and returns the last value of the blockchain """
+    return blockchain[-1]
+
+
+# function to add new values to the blockchain
+# passes in arguments and also uses default argument of [1]
+def add_value(transaction_amount, last_transaction=[1]):
+    """ Append a new value as well as the last blockchain value to the blockchain
+    Arguments:
+        :transaction_amount: The new amount that should be added
+        :last_transaction: The last blockchain transaction (default[1]).
+        """
+    blockchain.append([last_transaction, transaction_amount])
+
+
+
+def get_user_input():
+    """ Returns the user input, a new transaction amount, as a float """
+    return float(input("Please enter your transaction amount: "))
+
+# create nested list of blockchain values calling input function
+tx_amount = get_user_input()
+add_value(tx_amount)
+
+# sample of using keyword arguments to call the function
+tx_amount = get_user_input()
+add_value(last_transaction=get_last_blockchain_value(), transaction_amount=tx_amount)
+
+tx_amount = get_user_input()
+add_value(tx_amount, get_last_blockchain_value())
+
+print(blockchain)
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX1.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Comment lines are not interpreted
+# use the octothorpe (hash, pound) to make comments
+# Inserting # at start of line of code prevents it being run
+
+print("Hello World!")
+print("Hello Again")
+print("I like typing this.")
+print("This is fun.")
+print('Yay! Printing.')
+print("I'd much rather you 'not'.")
+print('I "said" do not touch this.')
+print("So good...here's another line")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX10.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Some escape sequences.
+# Useful for chars in difficult to type variables
+
+tabby_cat = "\tI'm tabbed in."
+persian_cat = "I'm split\non a line."
+backslash_cat = "I'm \\ a \\ cat."
+
+fat_cat = """
+I'll do a list:
+\t* Cat food
+\t* Fishies
+\t* Catnip\n\t* Grass
+"""
+
+print(tabby_cat)
+print(persian_cat)
+print(backslash_cat)
+print(fat_cat)
+
+fat_cat2 = '''
+I'll do a list:
+\t* Cat food
+\t* Fishies
+\t* Catnip\n\t* Grass
+'''
+print(fat_cat2)
+
+# Using more escape sequences
+# \'Single-quote (')
+# \" Double-quote (")
+singlequotes = "\'\'\'"
+print(singlequotes)
+print("\"Some uses for escape sequences.\"")
+print(singlequotes)
+print ("\\") #prints a single backslash
+
+# \a ASCII bell (BEL)
+print("\a Hear that?") # Sounds the Microsoft soft bell.
+
+# \b ASCII backspace (BS)
+# \f ASCII formfeed (FF)
+# \n ASCII newline (LF)
+# \r Carriage return (CR)
+# \t Horizntal tab (TAB)
+
+print("Now...\nthats a line feed")
+print("Now...thats a ba\bckspace feed taking out the a char")
+print("Now...this is what a form feed char looks like on-screen\f")
+print("Now...this is what a carriage return looks like on-screen\r")
+print("Now...this is what\thappens when\tyou tab in a string!")
+
+# \N{name] Character name in the Unicode database (Unicode only)
+# \uxxxx   Character with a 16-bit hex value xxxx
+# \uxxxxxxxx    Character with a 32-bit hex value xxxx
+# \xhh     Character with hex value hh
+# \000     Character with octal value 000
+# \v       ASCII vertical tab (VT)
+print("\N{hyphen} it's a hyphen")
+print("\u0096 cant find a 16-bit hex value!")
+print("\u00000115 cant find a 32-bit hex value!")
+print("\x6E lower-case N") # hex value for lower case n
+print("\067 it's a seven") # octal value for 7
+print("\v shold be vertical tab now!") # vertical tab
+
+print("Not covered in glory here.\n\nNot sure I am getting a good understanding!")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX11.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Asking Questions
+# Python's input() function allows user input.
+# The input() method reads a line from input, converts into a string and returns it.
+# The brackets can contain a prompt such as "Please enter your surname:"
+# or be left empty and assigned to the variable as below
+# or assigned by this method  age = input("How old are you? ").
+
+print("How old are you?", end=' ') # end=' ' prevents a newline at end of the question.
+age = input()
+print("How tall are you in metres?", end=' ')
+height = input()
+print("What weight are you in kg?", end=' ')
+weight = input()
+
+#Print f is Python 3.6 F-strings which improve formatting.
+# Strings, held within curly brackets, get passed in by the previous code
+print(f"So, you're {age} years old, {height}m tall and weigh in at {weight}kg.")
+
+food = input("What's your favourite food? ")
+drink = input("Which drink do you like best? ")
+print(f"I like {food} and {drink} too!")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX12.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Prompting People
+
+# C:\Users\Jim> python c:\users\Jim\'.\Documents\Python Scripts\lpthw\'ex12.py
+# Can also enter C:\Users\Jim> python c:\users\Jim\Documents\'.\Python Scripts\lpthw\'ex12.py
+# The part of the command entered in quotes is to allow Powershell to handle the spaces in the folder name
+
+# Python's input() function allows user input.
+# The input() method reads a line from input, converts into a string and returns it.
+# The brackets can contain a prompt such as "Please enter your surname:"
+# and assigned to the variable as in previous Ex11.
+# or rewriting ex11 below to assign by this method  age = input("How old are you? ").
+
+# We reduce the total lines of code by half
+# this gets removed print("How old are you?", end=' ') # end=' ' prevents a newline at end of the question.
+age = input("How old are you? ")
+# this gets removed print("How tall are you in metres?", end=' ')
+height = input("How tall are you in metres? ")
+# this gets removed print("What weight are you in kg?", end=' ')
+weight = input("What weight are you in kg?")
+
+#Print f is Python 3.6 F-strings which improve formatting.
+# Strings, held within curly brackets, get passed in by the previous code
+print(f"So, you're {age} years old, {height}m tall and weigh in at {weight}kg.")
+print("\n")
+food = input("What's your favourite food? ")
+drink = input("Which drink do you like best? ")
+print(f"I like {food} and {drink} too!")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX13.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Parameters, Unpacking, Variables
+
+from sys import argv
+# read the WYSS sestion for how to run this
+script, first, second, third, last = argv
+
+print("THE SCRIPT IS CALLED:", script)
+print("Your first variable is called:", first)
+print("Your second variable is called:", second)
+print("Your third variable is called:", third)
+print("Your fourth variable is called:", last)
+
+# now take some user input while the script is running
+testq = input("Is this going ok? Just type Y or N: ")
+if testq == "Y":
+    print("Glad you like it!")
+else:
+    print("Yes, hard going eh? But keep at it, you'll get there!")
+
+# Skip a line and print the list of all argv variables
+print("\n")
+print("Argument list: ", argv)
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX14.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Prompting and passing
+
+from sys import argv
+
+script, username, surname = argv
+prompt = '***> '
+
+print(f"Hi {username} {surname}, I'm the {script} script.")
+print("I'd like to ask you a few questions.")
+print(f"Do you like me {username}?")
+likes = input(prompt)
+
+print(f"Where do you live {username}?")
+lives = input(prompt)
+
+print(f"{username}, what kind of computer do you have?")
+computer = input(prompt)
+
+print(f"""
+Alright, {username} {surname} so you said {likes} about liking me.
+You live in {lives}. Not sure where that is.
+And you have a {computer} computer. Nice.
+""")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX15.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Reading files
+# Changed directory in lpthw directory which simplifies the run script command to
+# python ex15.py ex15_sample.txt
+
+# import the arguments variable
+from sys import argv
+
+# set the script and filename arguments
+script, filename = argv
+# set variable txt to open the filename passed in as an argument
+txt = open(filename)
+# print the message stating the filename and print the text held in the file
+print(f"Here's your file {filename}:")
+print(txt.read())
+# print a message prompting with an > char for re-entry of the filename
+print("Type the filename again:")
+file_again = input("> ")
+# set the txt_again variable to open the new variable holding the new filename
+txt_again = open(file_again)
+# print the text held in the file
+print(txt_again.read())
+# close files before ending script
+txt.close()
+txt_again.close()
+### txt_again= close(file_again)
+print(f"Thats both {txt_again} and {txt} filename variables now closed.")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX16.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Reading and writing files
+# Commands to remember:
+# close: Closes the file, like File > Save... in your editor.
+# read: Reads the contents of the file. You can assign the result to a variable.
+# readline: Reads jus one line of a text file.
+# truncate: Empties the fie. Wach out if you care about the file.
+# write('stuff'): Writes "stuff" to the file.
+# seek(0): Moves the read/write location to the begnning of the file.
+
+# import the arguments variable and the file read module 16a
+from sys import argv
+# import fileread16a ### removed NOT WORKING, see related comments below
+
+# set the script and filename arguments
+script, filename = argv
+
+# Initial program user info and directions.
+print(f"We are going to erase {filename}.")
+print(f"If you don't want that hit CTRL-C (^C).")
+print(f"If you do want that, hit RETURN.")
+
+# Awaits user decision, dislays a ? while waiting.
+input("?")
+
+# If the user has selected CTRL+C the program will end, otherwise it continues from here.
+# A user message is followed by setting the variable "target" to
+# open the filename supplied in the argv parameter for writing
+print("Opening the file...")
+target = open(filename, 'w')
+# User message that prevous filecontents will be erased (by .truncate)
+print("Truncating the file. GOODBYE OLD TEXT!")
+target.truncate()
+
+# Program now requests three lins of text for writing to the file.
+print("Now I will ask for three lines of text.")
+line1 = input("line1: ")
+line2 = input("line2: ")
+line3 = input("line3: ")
+
+# Write the three lines provided by the user into the file
+print("I am going to write these lines to the file.")
+# Reaplce six target.write commands with a single line.
+## target.write(line1)
+## target.write("\n")
+## target.write(line2)
+## target.write("\n")
+## target.write(line3)
+## target.write("\n")
+target.write(line1 + '\n' + line2 + '\n' + line3 + '\n')
+# and an alternative method which puts each line within quotes
+## target.write('%r\n%r\n%r\n' % (line1, line2, line3))
+
+#Now read the file using module 16a. NOT WORKING. Call fileread.py manually
+## fileread16a.read(target)
+
+# self explanatory...close the file
+# important to .close as this sets the proper file attributes.
+print("And finally, we close the file.")
+target.close
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX16A.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Reading and writing files
+# Part2. This script reads the file created in ex16.
+# Part2 is run manually/separtely after script 16 has set up test.txt file.
+
+# import the arguments variable
+## from sys import argv
+
+# set the script and filename arguments
+## script, filename = argv
+
+## target_read = open(filename)
+## print(target_read.read())
+
+## target_read.close
+
+#Part3 acts as a funtion to be called from ex16.
+def read(filename)
+    return target_read = open(filename)
+    print(target_read.read())
+    target_read.close
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX17.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# More Files: Reading and writing files
+# Commands to remember:
+    # close: Closes the file, like File > Save... in your editor.
+    # read: Reads the contents of the file. You can assign the result to a variable.
+    # readline: Reads just one line of a text file.
+    # truncate: Empties the file. Wach out if you care about the file.
+    # write('stuff'): Writes "stuff" to the file.
+    # seek(0): Moves the read/write location to the begnning of the file.
+
+# import the arguments variable and the file read module 16a
+from sys import argv
+from os.path import exists # reurns TRUE if a file exists
+
+# set the script and filename arguments
+script, from_file, to_file = argv
+
+# we could do these next two lines in one line, how?
+in_file = open(from_file)
+indata = in_file.read()
+
+# Initial program user info and directions.
+print(f"The input file is {len(indata)} bytes long.")
+
+print(f"Does the output file exist? {exists(to_file)}")
+###print("Ready, hit ENTER to continue, CTRL-C to abort.") ### this line moved to the input statement.
+
+# Awaits user decision, displays nothing () or whatever is in the brackets (Reay, hit ...).
+###input()
+input("Ready, hit ENTER to continue, CTRL-C to abort.")
+
+# open out_file for writing indata to it
+out_file = open(to_file, 'w')
+out_file.write(indata)
+
+print("Alright, all done.")
+
+# self explanatory...close both files
+# important to .close as this sets the proper file attributes.
+in_file.close()
+out_file.close()
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX18.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Names, Variables, Code, Functions
+# Functions do 3 things, they
+    # name pieces of Code the way variables name strings and numbers
+    # take arguments the way scripts take argv
+    # let you make your own "mini commands" using these first 2 things
+
+# this function is like scripts with argv
+def print_two(*args):
+    arg1, arg2 = args
+    print(f"arg1: {arg1}, arg2: {arg2}")
+
+# ok that args is actually pointless, we can do this
+def print_two_again(arg1, arg2):
+    print(f"arg1: {arg1}, arg2: {arg2}")
+
+# this takes one argument
+def print_one(arg1):
+    print(f"arg1: {arg1}")
+
+# this takes no arguments
+def print_none():
+    print("I got nothin'.")
+
+print_two("Jim", "Hannaway")
+print_two_again("James", "Hannaway")
+print_one("FirstArg")
+print_none()
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX19.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Functions & Variables
+# Functions do 3 things, they
+    # name pieces of Code the way variables name strings and numbers
+    # take arguments the way scripts take argv
+    # let you make your own "mini commands" using these first 2 things
+
+""" This shows all different ways to pass values into our
+    cheese_and_crackers function. We can pass in straight numbers,
+    variables, maths calculations, even math calculations and variables together """
+
+# Define the function 'cheese_and_crackers' to take in two values; cheese_count and boxes_of_crackers
+# Then print out the values passed into the function with sme text around them t give context and meaning.
+def cheese_and_crackers(cheese_count, boxes_of_crackers):
+    print(f"You have {cheese_count} cheeses!")
+    print(f"You have {boxes_of_crackers} boxes of crackers!")
+    print("Man that's enough for a party!")
+    print("Get a blanket. \n")
+
+# Pass two values directly into the cheese_and_crackers function
+print("We can just give the funtion numbers directly:")
+cheese_and_crackers(20, 30)
+
+# Create two other variables amount_of_cheese and amount_of_crackers,
+# assign values to them and an pass them into the cheese_and_crackers function.
+print("OR we can use variables from our script.")
+amount_of_cheese = 10
+amount_of_crackers = 50
+
+cheese_and_crackers(amount_of_cheese, amount_of_crackers)
+
+# Run cheese_and_crackers function with values created from calculations inside the function
+print("We can even do math inside too:")
+cheese_and_crackers(10 + 20, 5 + 6)
+
+# Call (run) cheese_and_crackers with its passed in values created from
+# a combination of existing variables with a math calculation
+print("And we can combine the two, variable and math:")
+cheese_and_crackers(amount_of_cheese + 100, amount_of_crackers + 1000)
+
+count = 0
+
+def function_ten_ways(numbers, letters):
+    print(count)
+    print(f"The numbers are {numbers} and the letters are {letters}.")
+
+# 1st around
+count = count + 1
+function_ten_ways(0, "No letter")
+print("No values passed this time! Doesn't work so passed in values directly!")
+
+# 2nd call
+count = count + 1
+function_ten_ways(1, "A")
+print("One value passed this time!")
+
+# 3rd call
+count = count + 1
+function_ten_ways(1+1, "A"+"B")
+print("Added values and strings passed this time!")
+
+# 4th call
+count = count + 1
+function_ten_ways("1"+"1"+"2", "A"+"B"+"C")
+print("Added strings passed as values this time!")
+
+# 5th Call
+amount_of_numbers = 10
+amount_of_letters = 26
+count = count + 1
+function_ten_ways(amount_of_numbers, amount_of_letters)
+print("Two new varaibles passed this time!")
+
+# 6th Call
+count = count + 1
+function_ten_ways(amount_of_numbers *2 , amount_of_letters *2)
+print("Two variables inclusing arithmetic operations passed this time!")
+
+# 7th Call
+count = count + 1
+function_six = function_ten_ways
+function_six(amount_of_numbers, amount_of_letters)
+print("Asssign the function to a variable and call it again! Jeez it works")
+
+# 8th Call
+count = count + 1
+function_six = function_ten_ways
+new_list = (55, "ABCDE")
+function_six(*new_list)
+print("Asssign the function to a variable with a variable number of arguments as in *args. Yip. Works!")
+
+# 9th call
+count = count + 1
+def function_seven():
+    letters1 = "JHFH"
+    numbers1 = 1509
+    function_ten_ways(numbers1, letters1)
+    print("Create a new function using the original function with new values and call the new function")
+function_seven()
+
+# 10th call
+count = count + 1
+def function_seven():
+    letters1 = "XJHFHX"
+    return letters1
+
+def function_eight():
+    numbers1 = "X" + 1509 + "X"
+    return numbers1
+
+function_ten_ways(function_seven, function_eight)
+print("Create a new function pasing in two functions.")
+
+
+# 11th call
+count = count + 1
+numbers2 = input("Input numbers: ")
+letters2 = input("Input letters: ")
+function_ten_ways(numbers2, letters2)
+print("Call the function using user input as values.")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX2.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# A comment, this is so you can read the program later.
+# Anything after the # is ignored by python.
+
+print("I could have code like this.") # and the comment after is ignored
+
+# You can also use a # to dsable or comment out code
+# print("This won't run.")
+
+print("This will run.")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX20.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+BLOCKCHAIN.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Create the blockchain as a list
+blockchain = [] # initialise and initially an empty list
+
+
+# define a function to get the last value in the blockchain
+
+def get_last_blockchain_value():
+    """ index -1 accesses end of list and returns the last value of the blockchain """
+    return blockchain[-1]
+
+
+# function to add new values to the blockchain
+# passes in arguments and also uses default argument of [1]
+def add_value(transaction_amount, last_transaction=[1]):
+    """ Append a new value as well as the last blockchain value to the blockchain
+    Arguments:
+        :transaction_amount: The new amount that should be added
+        :last_transaction: The last blockchain transaction (default[1]).
+        """
+    blockchain.append([last_transaction, transaction_amount])
+
+
+
+def get_user_input():
+    """ Returns the user input, a new transaction amount, as a float """
+    return float(input("Please enter your transaction amount: "))
+
+# create nested list of blockchain values calling input function
+tx_amount = get_user_input()
+add_value(tx_amount)
+
+# sample of using keyword arguments to call the function
+tx_amount = get_user_input()
+add_value(last_transaction=get_last_blockchain_value(), transaction_amount=tx_amount)
+
+tx_amount = get_user_input()
+add_value(tx_amount, get_last_blockchain_value())
+
+print(blockchain)
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX1.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Comment lines are not interpreted
+# use the octothorpe (hash, pound) to make comments
+# Inserting # at start of line of code prevents it being run
+
+print("Hello World!")
+print("Hello Again")
+print("I like typing this.")
+print("This is fun.")
+print('Yay! Printing.')
+print("I'd much rather you 'not'.")
+print('I "said" do not touch this.')
+print("So good...here's another line")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX10.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Some escape sequences.
+# Useful for chars in difficult to type variables
+
+tabby_cat = "\tI'm tabbed in."
+persian_cat = "I'm split\non a line."
+backslash_cat = "I'm \\ a \\ cat."
+
+fat_cat = """
+I'll do a list:
+\t* Cat food
+\t* Fishies
+\t* Catnip\n\t* Grass
+"""
+
+print(tabby_cat)
+print(persian_cat)
+print(backslash_cat)
+print(fat_cat)
+
+fat_cat2 = '''
+I'll do a list:
+\t* Cat food
+\t* Fishies
+\t* Catnip\n\t* Grass
+'''
+print(fat_cat2)
+
+# Using more escape sequences
+# \'Single-quote (')
+# \" Double-quote (")
+singlequotes = "\'\'\'"
+print(singlequotes)
+print("\"Some uses for escape sequences.\"")
+print(singlequotes)
+print ("\\") #prints a single backslash
+
+# \a ASCII bell (BEL)
+print("\a Hear that?") # Sounds the Microsoft soft bell.
+
+# \b ASCII backspace (BS)
+# \f ASCII formfeed (FF)
+# \n ASCII newline (LF)
+# \r Carriage return (CR)
+# \t Horizntal tab (TAB)
+
+print("Now...\nthats a line feed")
+print("Now...thats a ba\bckspace feed taking out the a char")
+print("Now...this is what a form feed char looks like on-screen\f")
+print("Now...this is what a carriage return looks like on-screen\r")
+print("Now...this is what\thappens when\tyou tab in a string!")
+
+# \N{name] Character name in the Unicode database (Unicode only)
+# \uxxxx   Character with a 16-bit hex value xxxx
+# \uxxxxxxxx    Character with a 32-bit hex value xxxx
+# \xhh     Character with hex value hh
+# \000     Character with octal value 000
+# \v       ASCII vertical tab (VT)
+print("\N{hyphen} it's a hyphen")
+print("\u0096 cant find a 16-bit hex value!")
+print("\u00000115 cant find a 32-bit hex value!")
+print("\x6E lower-case N") # hex value for lower case n
+print("\067 it's a seven") # octal value for 7
+print("\v shold be vertical tab now!") # vertical tab
+
+print("Not covered in glory here.\n\nNot sure I am getting a good understanding!")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX11.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Asking Questions
+# Python's input() function allows user input.
+# The input() method reads a line from input, converts into a string and returns it.
+# The brackets can contain a prompt such as "Please enter your surname:"
+# or be left empty and assigned to the variable as below
+# or assigned by this method  age = input("How old are you? ").
+
+print("How old are you?", end=' ') # end=' ' prevents a newline at end of the question.
+age = input()
+print("How tall are you in metres?", end=' ')
+height = input()
+print("What weight are you in kg?", end=' ')
+weight = input()
+
+#Print f is Python 3.6 F-strings which improve formatting.
+# Strings, held within curly brackets, get passed in by the previous code
+print(f"So, you're {age} years old, {height}m tall and weigh in at {weight}kg.")
+
+food = input("What's your favourite food? ")
+drink = input("Which drink do you like best? ")
+print(f"I like {food} and {drink} too!")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX12.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Prompting People
+
+# C:\Users\Jim> python c:\users\Jim\'.\Documents\Python Scripts\lpthw\'ex12.py
+# Can also enter C:\Users\Jim> python c:\users\Jim\Documents\'.\Python Scripts\lpthw\'ex12.py
+# The part of the command entered in quotes is to allow Powershell to handle the spaces in the folder name
+
+# Python's input() function allows user input.
+# The input() method reads a line from input, converts into a string and returns it.
+# The brackets can contain a prompt such as "Please enter your surname:"
+# and assigned to the variable as in previous Ex11.
+# or rewriting ex11 below to assign by this method  age = input("How old are you? ").
+
+# We reduce the total lines of code by half
+# this gets removed print("How old are you?", end=' ') # end=' ' prevents a newline at end of the question.
+age = input("How old are you? ")
+# this gets removed print("How tall are you in metres?", end=' ')
+height = input("How tall are you in metres? ")
+# this gets removed print("What weight are you in kg?", end=' ')
+weight = input("What weight are you in kg?")
+
+#Print f is Python 3.6 F-strings which improve formatting.
+# Strings, held within curly brackets, get passed in by the previous code
+print(f"So, you're {age} years old, {height}m tall and weigh in at {weight}kg.")
+print("\n")
+food = input("What's your favourite food? ")
+drink = input("Which drink do you like best? ")
+print(f"I like {food} and {drink} too!")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX13.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Parameters, Unpacking, Variables
+
+from sys import argv
+# read the WYSS sestion for how to run this
+script, first, second, third, last = argv
+
+print("THE SCRIPT IS CALLED:", script)
+print("Your first variable is called:", first)
+print("Your second variable is called:", second)
+print("Your third variable is called:", third)
+print("Your fourth variable is called:", last)
+
+# now take some user input while the script is running
+testq = input("Is this going ok? Just type Y or N: ")
+if testq == "Y":
+    print("Glad you like it!")
+else:
+    print("Yes, hard going eh? But keep at it, you'll get there!")
+
+# Skip a line and print the list of all argv variables
+print("\n")
+print("Argument list: ", argv)
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX14.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Prompting and passing
+
+from sys import argv
+
+script, username, surname = argv
+prompt = '***> '
+
+print(f"Hi {username} {surname}, I'm the {script} script.")
+print("I'd like to ask you a few questions.")
+print(f"Do you like me {username}?")
+likes = input(prompt)
+
+print(f"Where do you live {username}?")
+lives = input(prompt)
+
+print(f"{username}, what kind of computer do you have?")
+computer = input(prompt)
+
+print(f"""
+Alright, {username} {surname} so you said {likes} about liking me.
+You live in {lives}. Not sure where that is.
+And you have a {computer} computer. Nice.
+""")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX15.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Reading files
+# Changed directory in lpthw directory which simplifies the run script command to
+# python ex15.py ex15_sample.txt
+
+# import the arguments variable
+from sys import argv
+
+# set the script and filename arguments
+script, filename = argv
+# set variable txt to open the filename passed in as an argument
+txt = open(filename)
+# print the message stating the filename and print the text held in the file
+print(f"Here's your file {filename}:")
+print(txt.read())
+# print a message prompting with an > char for re-entry of the filename
+print("Type the filename again:")
+file_again = input("> ")
+# set the txt_again variable to open the new variable holding the new filename
+txt_again = open(file_again)
+# print the text held in the file
+print(txt_again.read())
+# close files before ending script
+txt.close()
+txt_again.close()
+### txt_again= close(file_again)
+print(f"Thats both {txt_again} and {txt} filename variables now closed.")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX16.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Reading and writing files
+# Commands to remember:
+# close: Closes the file, like File > Save... in your editor.
+# read: Reads the contents of the file. You can assign the result to a variable.
+# readline: Reads jus one line of a text file.
+# truncate: Empties the fie. Wach out if you care about the file.
+# write('stuff'): Writes "stuff" to the file.
+# seek(0): Moves the read/write location to the begnning of the file.
+
+# import the arguments variable and the file read module 16a
+from sys import argv
+# import fileread16a ### removed NOT WORKING, see related comments below
+
+# set the script and filename arguments
+script, filename = argv
+
+# Initial program user info and directions.
+print(f"We are going to erase {filename}.")
+print(f"If you don't want that hit CTRL-C (^C).")
+print(f"If you do want that, hit RETURN.")
+
+# Awaits user decision, dislays a ? while waiting.
+input("?")
+
+# If the user has selected CTRL+C the program will end, otherwise it continues from here.
+# A user message is followed by setting the variable "target" to
+# open the filename supplied in the argv parameter for writing
+print("Opening the file...")
+target = open(filename, 'w')
+# User message that prevous filecontents will be erased (by .truncate)
+print("Truncating the file. GOODBYE OLD TEXT!")
+target.truncate()
+
+# Program now requests three lins of text for writing to the file.
+print("Now I will ask for three lines of text.")
+line1 = input("line1: ")
+line2 = input("line2: ")
+line3 = input("line3: ")
+
+# Write the three lines provided by the user into the file
+print("I am going to write these lines to the file.")
+# Reaplce six target.write commands with a single line.
+## target.write(line1)
+## target.write("\n")
+## target.write(line2)
+## target.write("\n")
+## target.write(line3)
+## target.write("\n")
+target.write(line1 + '\n' + line2 + '\n' + line3 + '\n')
+# and an alternative method which puts each line within quotes
+## target.write('%r\n%r\n%r\n' % (line1, line2, line3))
+
+#Now read the file using module 16a. NOT WORKING. Call fileread.py manually
+## fileread16a.read(target)
+
+# self explanatory...close the file
+# important to .close as this sets the proper file attributes.
+print("And finally, we close the file.")
+target.close
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX16A.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Reading and writing files
+# Part2. This script reads the file created in ex16.
+# Part2 is run manually/separtely after script 16 has set up test.txt file.
+
+# import the arguments variable
+## from sys import argv
+
+# set the script and filename arguments
+## script, filename = argv
+
+## target_read = open(filename)
+## print(target_read.read())
+
+## target_read.close
+
+#Part3 acts as a funtion to be called from ex16.
+def read(filename)
+    return target_read = open(filename)
+    print(target_read.read())
+    target_read.close
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX17.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# More Files: Reading and writing files
+# Commands to remember:
+    # close: Closes the file, like File > Save... in your editor.
+    # read: Reads the contents of the file. You can assign the result to a variable.
+    # readline: Reads just one line of a text file.
+    # truncate: Empties the file. Wach out if you care about the file.
+    # write('stuff'): Writes "stuff" to the file.
+    # seek(0): Moves the read/write location to the begnning of the file.
+
+# import the arguments variable and the file read module 16a
+from sys import argv
+from os.path import exists # reurns TRUE if a file exists
+
+# set the script and filename arguments
+script, from_file, to_file = argv
+
+# we could do these next two lines in one line, how?
+in_file = open(from_file)
+indata = in_file.read()
+
+# Initial program user info and directions.
+print(f"The input file is {len(indata)} bytes long.")
+
+print(f"Does the output file exist? {exists(to_file)}")
+###print("Ready, hit ENTER to continue, CTRL-C to abort.") ### this line moved to the input statement.
+
+# Awaits user decision, displays nothing () or whatever is in the brackets (Reay, hit ...).
+###input()
+input("Ready, hit ENTER to continue, CTRL-C to abort.")
+
+# open out_file for writing indata to it
+out_file = open(to_file, 'w')
+out_file.write(indata)
+
+print("Alright, all done.")
+
+# self explanatory...close both files
+# important to .close as this sets the proper file attributes.
+in_file.close()
+out_file.close()
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX18.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Names, Variables, Code, Functions
+# Functions do 3 things, they
+    # name pieces of Code the way variables name strings and numbers
+    # take arguments the way scripts take argv
+    # let you make your own "mini commands" using these first 2 things
+
+# this function is like scripts with argv
+def print_two(*args):
+    arg1, arg2 = args
+    print(f"arg1: {arg1}, arg2: {arg2}")
+
+# ok that args is actually pointless, we can do this
+def print_two_again(arg1, arg2):
+    print(f"arg1: {arg1}, arg2: {arg2}")
+
+# this takes one argument
+def print_one(arg1):
+    print(f"arg1: {arg1}")
+
+# this takes no arguments
+def print_none():
+    print("I got nothin'.")
+
+print_two("Jim", "Hannaway")
+print_two_again("James", "Hannaway")
+print_one("FirstArg")
+print_none()
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX19.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Functions & Variables
+# Functions do 3 things, they
+    # name pieces of Code the way variables name strings and numbers
+    # take arguments the way scripts take argv
+    # let you make your own "mini commands" using these first 2 things
+
+""" This shows all different ways to pass values into our
+    cheese_and_crackers function. We can pass in straight numbers,
+    variables, maths calculations, even math calculations and variables together """
+
+# Define the function 'cheese_and_crackers' to take in two values; cheese_count and boxes_of_crackers
+# Then print out the values passed into the function with sme text around them t give context and meaning.
+def cheese_and_crackers(cheese_count, boxes_of_crackers):
+    print(f"You have {cheese_count} cheeses!")
+    print(f"You have {boxes_of_crackers} boxes of crackers!")
+    print("Man that's enough for a party!")
+    print("Get a blanket. \n")
+
+# Pass two values directly into the cheese_and_crackers function
+print("We can just give the funtion numbers directly:")
+cheese_and_crackers(20, 30)
+
+# Create two other variables amount_of_cheese and amount_of_crackers,
+# assign values to them and an pass them into the cheese_and_crackers function.
+print("OR we can use variables from our script.")
+amount_of_cheese = 10
+amount_of_crackers = 50
+
+cheese_and_crackers(amount_of_cheese, amount_of_crackers)
+
+# Run cheese_and_crackers function with values created from calculations inside the function
+print("We can even do math inside too:")
+cheese_and_crackers(10 + 20, 5 + 6)
+
+# Call (run) cheese_and_crackers with its passed in values created from
+# a combination of existing variables with a math calculation
+print("And we can combine the two, variable and math:")
+cheese_and_crackers(amount_of_cheese + 100, amount_of_crackers + 1000)
+
+count = 0
+
+def function_ten_ways(numbers, letters):
+    print(count)
+    print(f"The numbers are {numbers} and the letters are {letters}.")
+
+# 1st around
+count = count + 1
+function_ten_ways(0, "No letter")
+print("No values passed this time! Doesn't work so passed in values directly!")
+
+# 2nd call
+count = count + 1
+function_ten_ways(1, "A")
+print("One value passed this time!")
+
+# 3rd call
+count = count + 1
+function_ten_ways(1+1, "A"+"B")
+print("Added values and strings passed this time!")
+
+# 4th call
+count = count + 1
+function_ten_ways("1"+"1"+"2", "A"+"B"+"C")
+print("Added strings passed as values this time!")
+
+# 5th Call
+amount_of_numbers = 10
+amount_of_letters = 26
+count = count + 1
+function_ten_ways(amount_of_numbers, amount_of_letters)
+print("Two new varaibles passed this time!")
+
+# 6th Call
+count = count + 1
+function_ten_ways(amount_of_numbers *2 , amount_of_letters *2)
+print("Two variables inclusing arithmetic operations passed this time!")
+
+# 7th Call
+count = count + 1
+function_six = function_ten_ways
+function_six(amount_of_numbers, amount_of_letters)
+print("Asssign the function to a variable and call it again! Jeez it works")
+
+# 8th Call
+count = count + 1
+function_six = function_ten_ways
+new_list = (55, "ABCDE")
+function_six(*new_list)
+print("Asssign the function to a variable with a variable number of arguments as in *args. Yip. Works!")
+
+# 9th call
+count = count + 1
+def function_seven():
+    letters1 = "JHFH"
+    numbers1 = 1509
+    function_ten_ways(numbers1, letters1)
+    print("Create a new function using the original function with new values and call the new function")
+function_seven()
+
+# 10th call
+count = count + 1
+def function_seven():
+    letters1 = "XJHFHX"
+    return letters1
+
+def function_eight():
+    numbers1 = "X" + 1509 + "X"
+    return numbers1
+
+function_ten_ways(function_seven, function_eight)
+print("Create a new function pasing in two functions.")
+
+
+# 11th call
+count = count + 1
+numbers2 = input("Input numbers: ")
+letters2 = input("Input letters: ")
+function_ten_ways(numbers2, letters2)
+print("Call the function using user input as values.")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX2.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# A comment, this is so you can read the program later.
+# Anything after the # is ignored by python.
+
+print("I could have code like this.") # and the comment after is ignored
+
+# You can also use a # to dsable or comment out code
+# print("This won't run.")
+
+print("This will run.")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX20A.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# File seek
+""" This shows file seek working.
+    This example is fromhttps://code-maven.com/python-seek
+
+    examples/python/seek.py """
+
+import os
+
+filename = 'dataseek.txt'
+with open(filename, 'w') as fh:
+    fh.write("Hello World!\nHow are you today?\nThank you!")
+
+print(os.path.getsize(filename))  # 44
+
+with open(filename) as fh:
+    print(fh.tell())        # 0
+    row = fh.readline()
+    print(row)              # Hello World!
+    print(fh.tell())        # 14
+
+#    fh.seek(-7, os.SEEK_END) # Back seek disabled in python3.
+    fh.seek(6, os.SEEK_SET)
+    print(fh.tell())        # 6
+
+    row = fh.readline()
+    print(row)              # World!
+    print(fh.tell())        # 14
+
+    fh.seek(0, os.SEEK_SET)
+    print(fh.tell())        # 0
+    print(fh.read(5))       # Hello
+
+    fh.seek(40, os.SEEK_SET)
+    print(fh.tell())        # 40
+    print(fh.read())        # you!
+    print(fh.tell())        # 44
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX21.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Functions Can REturn Something
+""" This shows use of return to set variables from the output of functions"""
+
+def add(a,b):
+    print(f"ADDING {a} + {b}")
+    return a + b
+
+def subtract(a,b):
+    print(f"SUBTRACTING {a} - {b}")
+    return a - b
+
+def multiply(a,b):
+    print(f"MULTIPLYING {a} * {b}")
+    return a * b
+
+def divide(a,b):
+    print(f"DIVIDING {a} / {b}")
+    return a / b
+
+print("Let's do some math with just functions")
+
+age = add(50, 5)
+height = subtract(72, 4)
+weight = multiply(95, 2)
+iq = divide(230, 2)
+
+print(f"Age: {age}, Height: {height}, weight: {weight}, IQ: {iq}.")
+
+# A puzzle for the extra credit, type it in anyway!
+print("Here is a puzzle.")
+
+what = add(age, subtract(height, multiply(weight, divide(iq,2))))
+print("That becomes: ", what, "Can you do it by hand?")
+print("Yes. You must work right to left, calculating each function as you go.")
+print("Then passing the result into the function immediately to its left. BooM!\n")
+
+what2 = age + (height - (iq/2)*weight)
+print("Resulting formula becomes age + (height - (iq/2)*weight)) = ", what2)
+
+print("Let's try to make it a positive result with a different formula.")
+what3 = (age / height) * (weight + iq)
+print(what3)
+
+what4 = multiply(divide(age,height),add(weight,iq))
+print(f"Proving that {what3} does equal {what4}")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX22.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# File aggregation
+""" This script reads through the lpthw directory
+    and appends each script to a new file """
+
+import os
+import sys
+import glob
+
+
+# Set path to the current directory and print it out.
+path = os.getcwd()
+print(f"Current directory is: {path}")
+
+# Get all the files in that directory and print a sample of their names
+files = os.listdir(path)
+print("Files in '%s': %s" % (path, files))
+print(files[0], files[3], files[5])
+
+##pyfiles = []
+##for file in glob.glob("*.py"):
+##    pyfiles.append(file)
+##print(f"This is pyfiles list: {pyfiles}")
+
+mylist = [f for f in glob.glob("*.py")]
+mylist.pop()
+del mylist[14]
+print(f"This is the list called mylist: {mylist}")
+
+#walk through all files in current directory
+#path = 'C:\Users\Jim\Documents\Python Scripts\lpthw'
+
+print("OPENING AGGREGATE FILE.")
+fh = open('PythonAggregates1.txt', 'a')
+
+for filename in mylist:
+    try:
+        fR = open(filename, "r")
+        print(f"Opening: {filename}")
+    except IOError:
+        print("Could not open File: " + filename)
+        sys.exit()
+
+    try:
+        fh.write("\n*-*-*-*-*-*-*-*-*-*-*-*-*\n")
+        fh.write(filename.upper())
+        fh.write("\n*-*-*-*-*-*-*-*-*-*-*-*-*\n\n")
+        for x in fR.readlines():
+            fh.write(x)
+    except IOError:
+        print("Could not write file: " + filename)
+        sys.exit()
+
+
+    fR.close()
+    print("close fileRead")
+fh.close()
+print("close fileWrite")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX3.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Numbers & Math
+
+print("I will now count chickens:")
+
+# No of hens is 25 plus (30/6=5) which is 30 in total
+# Order of math calculates 30/6 first
+print("Hens", 25 + 30 / 6)
+
+# No of cocks is 100 minus (remainder of (25*3)/4
+# So as 3 is the remainder of 75/4
+# Order of match calcuates remainder of 75/4=3 first
+# Then the result is 100 - 3.
+print("Cocks", float(100 - 25 * 3 % 4)) # using float to ensure type is set for this calc
+print(3 % 4)
+
+# Order of math is PEMDAS (left to right order of math operations: Parentheses, Exponents, Multiply, Divide, Add, Subtract
+# Can be thought of as PE(M&D)(A&S)
+# Order of math is therefore (4%2=0), (1/4=0.25), then (3+2+1-5+(0)-(0.25)+6)
+# Result is 6.75
+print("Now I will count the eggs:")
+print(3 + 2 + 1 - 5 + 4 % 2 - 1 / 4 + 6)
+
+# Boolean comparison of (3 + 2) being > (5 - 7) gives false
+print("Is it true that 3 + 2 < 5 - 7?")
+print(3 + 2 < 5 - 7)
+
+print("What is 3 + 2?", 3 + 2)
+print("What is 5 - 7?", 5 -7)
+
+print("Oh, that's why its false")
+
+# Additional Calculation
+print("Calculate the number of seconds in half a day:")
+print("60 seconds in a minute:", 60, "seconds in a minute")
+print("60 minutes in an hour:", 60 * 60,  "seconds in an hour")
+print("There are 24 hours in a day so half a day is 12 hours which is:", 60 * 60 *12, "seconds in a half day")
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX4.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Set no of cars to 100
+cars = 100
+# Set no of seats in a car.
+# Use float type as there may be half seats (eg luggage) affecting total capacity
+space_in_a_car = 4.0
+# Set the number of driver
+drivers = 30
+#Set the number of passengers
+passengers = 90
+# Calculate the numbr of cars that can be driven / not driven
+cars_not_driven = cars - drivers
+cars_driven = drivers
+# Calcate the car pool capacity and the average passengers per car
+carpool_capacity = cars_driven * space_in_a_car
+average_passengers_per_car = passengers / cars_driven
+
+print("There are", cars, "cars available.")
+print("There are only", drivers, "drivers available.")
+print("There will be", cars_not_driven, "empty cars today.")
+print("We can transport", carpool_capacity, "people today.")
+print("We have", passengers, "people to carpool today.")
+print("We need to put about", average_passengers_per_car, "in each car.")
+
+# Completed the following in Powershell Terminal: Type python enter
+i = 6
+x = 2
+j = 4
+
+print(i)
+print(i,j,x)
+print(j ** x)
+print(j ** x / i)
+i == j # False
+i == j == x # False
+i % j == x # True
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX5.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+name = 'Jimmy Hannaway'
+age = 55 #not a lie
+height = 68 #inches
+weight = 196 #lbs
+eyes = 'blue'
+teeth = 'white-ish'
+hair = 'brown'
+cm = height * 2.54
+kg = weight / 2.2046
+
+print (f"Let's talk about {name}.")
+print (f"He's {age} years old and {height} inches tall.")
+print (f"He's {weight} pounds heavy.")
+print (f"So in metric he is {cm:.1f}cm tall and {kg:.1f}kg heavy." )
+print ("Actually that's a bit overweight!")
+print (f"He's got {eyes} eye and {hair} hair.")
+print (f"His teeth are usually {teeth} depending on the coffee.")
+
+# this line is tricky so try to get it exactly right
+total = age + height + weight
+print (f"If I add {age}, {height} and {weight} I get {total}.")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX6.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Define x as the variable formatted by using
+# some text containing another variable called types_of_people.
+types_of_people = 10
+x = f"There are {types_of_people} types of people"
+
+# Define y as the variable formatted by using
+# some text containing another wo variables
+# called binary and do_not.
+binary = "binary"
+do_not = "don't"
+y = f"Those who know {binary} and those who {do_not}."
+
+print(x)
+print(y)
+
+# Now print two strings containing some text and a variable.
+# One string containing variable x and the other variable y.
+print(f"I said: {x}")
+print(f"I also said: '{y}'")
+
+# Set the variable hilarious to false and set the variable
+# joke_evaluation to some text plus blank format variable.
+# then print the joke_evaluation variable
+# and amend the format using hilarious to add False at the end of the string.
+hilarious = False
+joke_evaluation = "Isn't that joke so funny?! {}"
+print(joke_evaluation.format(hilarious))
+
+# Show that two string variables are concatenated uing the plus sign
+w = "This is the left side of ..."
+e = "a string with a right side."
+
+print (w + e)
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX7.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Printing out a nursery rhyme making use of these brackets{} and formatting
+# to complete the rhyme.
+print("Mary had a little lamb.")
+print("It's fleece was white as {}.".format('snow'))
+print("And everywhere that Mary went.")
+
+# Inserting 10 dots in a line
+print("." * 10) # what'd that do?
+
+# Setting up the end variables to spell out Cheese burger when printed
+end1 = "C"
+end2 = "h"
+end3 = "e"
+end4 = "e"
+end5 = "s"
+end6 = "e"
+end7 = "b"
+end8 = "u"
+end9 = "r"
+end10 = "g"
+end11 = "e"
+end12 = "r"
+
+# watch end = '' at the end. Try removing it to see what happens.
+# ... of course the space gets removed but it also prints burger on a new line!
+print (end1 + end2 + end3 + end4 + end5 + end6,end = ' ')
+print(end7 + end8 + end9 + end10 + end11 + end12)
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX8.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Define the variable formatter
+formatter = "{} {} {} {}"
+
+# Print the variable formatter, each time passing in four different arguments
+print(formatter.format(1, 2, 3, 4))
+print(formatter.format("one", "two", "three", "four"))
+print(formatter.format(True, False, False, True))
+print(formatter.format(formatter, formatter, formatter, formatter))
+# Print the variable formatter with on-the-fly text string as arguments
+print(formatter.format(
+    "Try your",
+    "Own text here",
+    "Maybe a poem",
+    "Or a song about fear."
+))
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX9.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Some strange new stuff, type it exactly!
+
+days = "Mon Tue Wed Thu Fri Sat Sun"
+months = "\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug"
+
+print("Here are the days: ", days)
+print("Here are the months: ", months)
+
+print("""
+There's something going on here.
+With these three double quotes.
+We'll be able to type as much as we like.
+Even 4 lines if we want, or 5, or 6.
+""")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+FILEREAD16A.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Reading and writing files
+# Part2. This script reads the file created in ex16. WORKS OK.
+# Part2 is run manually/separtely after script 16 has set up test.txt file.
+
+# import the arguments variable
+from sys import argv
+
+# set the script and filename arguments
+script, filename = argv
+
+target_read = open(filename)
+print(target_read.read())
+
+target_read.close
+
+#Part3 acts as a function to be called from ex16. NOT WORKING
+# def read(filename)
+#    return target = open(filename)
+#    print(target.read())
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+SELENIUM_DEMO.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+import selenium
+import webdriver
+import Keys
+
+class Helper:
+
+    self.driver = webdriver.Chrome()
+
+    def open_youtube(self):
+
+        driver.getUrl("https://www.youtube.com/")
+        search_bar = driver.find_element(By.ID, "search")
+        search_bar.send_keys("Golf")
+        search_bar.send_keys(Keys.RETURN)
+
+if __name__ == "__main__":
+    Helper()
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+BLOCKCHAIN.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Create the blockchain as a list
+blockchain = [] # initialise and initially an empty list
+
+
+# define a function to get the last value in the blockchain
+
+def get_last_blockchain_value():
+    """ index -1 accesses end of list and returns the last value of the blockchain """
+    return blockchain[-1]
+
+
+# function to add new values to the blockchain
+# passes in arguments and also uses default argument of [1]
+def add_value(transaction_amount, last_transaction=[1]):
+    """ Append a new value as well as the last blockchain value to the blockchain
+    Arguments:
+        :transaction_amount: The new amount that should be added
+        :last_transaction: The last blockchain transaction (default[1]).
+        """
+    blockchain.append([last_transaction, transaction_amount])
+
+
+
+def get_user_input():
+    """ Returns the user input, a new transaction amount, as a float """
+    return float(input("Please enter your transaction amount: "))
+
+# create nested list of blockchain values calling input function
+tx_amount = get_user_input()
+add_value(tx_amount)
+
+# sample of using keyword arguments to call the function
+tx_amount = get_user_input()
+add_value(last_transaction=get_last_blockchain_value(), transaction_amount=tx_amount)
+
+tx_amount = get_user_input()
+add_value(tx_amount, get_last_blockchain_value())
+
+print(blockchain)
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX1.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Comment lines are not interpreted
+# use the octothorpe (hash, pound) to make comments
+# Inserting # at start of line of code prevents it being run
+
+print("Hello World!")
+print("Hello Again")
+print("I like typing this.")
+print("This is fun.")
+print('Yay! Printing.')
+print("I'd much rather you 'not'.")
+print('I "said" do not touch this.')
+print("So good...here's another line")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX10.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Some escape sequences.
+# Useful for chars in difficult to type variables
+
+tabby_cat = "\tI'm tabbed in."
+persian_cat = "I'm split\non a line."
+backslash_cat = "I'm \\ a \\ cat."
+
+fat_cat = """
+I'll do a list:
+\t* Cat food
+\t* Fishies
+\t* Catnip\n\t* Grass
+"""
+
+print(tabby_cat)
+print(persian_cat)
+print(backslash_cat)
+print(fat_cat)
+
+fat_cat2 = '''
+I'll do a list:
+\t* Cat food
+\t* Fishies
+\t* Catnip\n\t* Grass
+'''
+print(fat_cat2)
+
+# Using more escape sequences
+# \'Single-quote (')
+# \" Double-quote (")
+singlequotes = "\'\'\'"
+print(singlequotes)
+print("\"Some uses for escape sequences.\"")
+print(singlequotes)
+print ("\\") #prints a single backslash
+
+# \a ASCII bell (BEL)
+print("\a Hear that?") # Sounds the Microsoft soft bell.
+
+# \b ASCII backspace (BS)
+# \f ASCII formfeed (FF)
+# \n ASCII newline (LF)
+# \r Carriage return (CR)
+# \t Horizntal tab (TAB)
+
+print("Now...\nthats a line feed")
+print("Now...thats a ba\bckspace feed taking out the a char")
+print("Now...this is what a form feed char looks like on-screen\f")
+print("Now...this is what a carriage return looks like on-screen\r")
+print("Now...this is what\thappens when\tyou tab in a string!")
+
+# \N{name] Character name in the Unicode database (Unicode only)
+# \uxxxx   Character with a 16-bit hex value xxxx
+# \uxxxxxxxx    Character with a 32-bit hex value xxxx
+# \xhh     Character with hex value hh
+# \000     Character with octal value 000
+# \v       ASCII vertical tab (VT)
+print("\N{hyphen} it's a hyphen")
+print("\u0096 cant find a 16-bit hex value!")
+print("\u00000115 cant find a 32-bit hex value!")
+print("\x6E lower-case N") # hex value for lower case n
+print("\067 it's a seven") # octal value for 7
+print("\v shold be vertical tab now!") # vertical tab
+
+print("Not covered in glory here.\n\nNot sure I am getting a good understanding!")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX11.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Asking Questions
+# Python's input() function allows user input.
+# The input() method reads a line from input, converts into a string and returns it.
+# The brackets can contain a prompt such as "Please enter your surname:"
+# or be left empty and assigned to the variable as below
+# or assigned by this method  age = input("How old are you? ").
+
+print("How old are you?", end=' ') # end=' ' prevents a newline at end of the question.
+age = input()
+print("How tall are you in metres?", end=' ')
+height = input()
+print("What weight are you in kg?", end=' ')
+weight = input()
+
+#Print f is Python 3.6 F-strings which improve formatting.
+# Strings, held within curly brackets, get passed in by the previous code
+print(f"So, you're {age} years old, {height}m tall and weigh in at {weight}kg.")
+
+food = input("What's your favourite food? ")
+drink = input("Which drink do you like best? ")
+print(f"I like {food} and {drink} too!")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX12.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Prompting People
+
+# C:\Users\Jim> python c:\users\Jim\'.\Documents\Python Scripts\lpthw\'ex12.py
+# Can also enter C:\Users\Jim> python c:\users\Jim\Documents\'.\Python Scripts\lpthw\'ex12.py
+# The part of the command entered in quotes is to allow Powershell to handle the spaces in the folder name
+
+# Python's input() function allows user input.
+# The input() method reads a line from input, converts into a string and returns it.
+# The brackets can contain a prompt such as "Please enter your surname:"
+# and assigned to the variable as in previous Ex11.
+# or rewriting ex11 below to assign by this method  age = input("How old are you? ").
+
+# We reduce the total lines of code by half
+# this gets removed print("How old are you?", end=' ') # end=' ' prevents a newline at end of the question.
+age = input("How old are you? ")
+# this gets removed print("How tall are you in metres?", end=' ')
+height = input("How tall are you in metres? ")
+# this gets removed print("What weight are you in kg?", end=' ')
+weight = input("What weight are you in kg?")
+
+#Print f is Python 3.6 F-strings which improve formatting.
+# Strings, held within curly brackets, get passed in by the previous code
+print(f"So, you're {age} years old, {height}m tall and weigh in at {weight}kg.")
+print("\n")
+food = input("What's your favourite food? ")
+drink = input("Which drink do you like best? ")
+print(f"I like {food} and {drink} too!")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX13.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Parameters, Unpacking, Variables
+
+from sys import argv
+# read the WYSS sestion for how to run this
+script, first, second, third, last = argv
+
+print("THE SCRIPT IS CALLED:", script)
+print("Your first variable is called:", first)
+print("Your second variable is called:", second)
+print("Your third variable is called:", third)
+print("Your fourth variable is called:", last)
+
+# now take some user input while the script is running
+testq = input("Is this going ok? Just type Y or N: ")
+if testq == "Y":
+    print("Glad you like it!")
+else:
+    print("Yes, hard going eh? But keep at it, you'll get there!")
+
+# Skip a line and print the list of all argv variables
+print("\n")
+print("Argument list: ", argv)
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX14.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Prompting and passing
+
+from sys import argv
+
+script, username, surname = argv
+prompt = '***> '
+
+print(f"Hi {username} {surname}, I'm the {script} script.")
+print("I'd like to ask you a few questions.")
+print(f"Do you like me {username}?")
+likes = input(prompt)
+
+print(f"Where do you live {username}?")
+lives = input(prompt)
+
+print(f"{username}, what kind of computer do you have?")
+computer = input(prompt)
+
+print(f"""
+Alright, {username} {surname} so you said {likes} about liking me.
+You live in {lives}. Not sure where that is.
+And you have a {computer} computer. Nice.
+""")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX15.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Reading files
+# Changed directory in lpthw directory which simplifies the run script command to
+# python ex15.py ex15_sample.txt
+
+# import the arguments variable
+from sys import argv
+
+# set the script and filename arguments
+script, filename = argv
+# set variable txt to open the filename passed in as an argument
+txt = open(filename)
+# print the message stating the filename and print the text held in the file
+print(f"Here's your file {filename}:")
+print(txt.read())
+# print a message prompting with an > char for re-entry of the filename
+print("Type the filename again:")
+file_again = input("> ")
+# set the txt_again variable to open the new variable holding the new filename
+txt_again = open(file_again)
+# print the text held in the file
+print(txt_again.read())
+# close files before ending script
+txt.close()
+txt_again.close()
+### txt_again= close(file_again)
+print(f"Thats both {txt_again} and {txt} filename variables now closed.")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX16.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Reading and writing files
+# Commands to remember:
+# close: Closes the file, like File > Save... in your editor.
+# read: Reads the contents of the file. You can assign the result to a variable.
+# readline: Reads jus one line of a text file.
+# truncate: Empties the fie. Wach out if you care about the file.
+# write('stuff'): Writes "stuff" to the file.
+# seek(0): Moves the read/write location to the begnning of the file.
+
+# import the arguments variable and the file read module 16a
+from sys import argv
+# import fileread16a ### removed NOT WORKING, see related comments below
+
+# set the script and filename arguments
+script, filename = argv
+
+# Initial program user info and directions.
+print(f"We are going to erase {filename}.")
+print(f"If you don't want that hit CTRL-C (^C).")
+print(f"If you do want that, hit RETURN.")
+
+# Awaits user decision, dislays a ? while waiting.
+input("?")
+
+# If the user has selected CTRL+C the program will end, otherwise it continues from here.
+# A user message is followed by setting the variable "target" to
+# open the filename supplied in the argv parameter for writing
+print("Opening the file...")
+target = open(filename, 'w')
+# User message that prevous filecontents will be erased (by .truncate)
+print("Truncating the file. GOODBYE OLD TEXT!")
+target.truncate()
+
+# Program now requests three lins of text for writing to the file.
+print("Now I will ask for three lines of text.")
+line1 = input("line1: ")
+line2 = input("line2: ")
+line3 = input("line3: ")
+
+# Write the three lines provided by the user into the file
+print("I am going to write these lines to the file.")
+# Reaplce six target.write commands with a single line.
+## target.write(line1)
+## target.write("\n")
+## target.write(line2)
+## target.write("\n")
+## target.write(line3)
+## target.write("\n")
+target.write(line1 + '\n' + line2 + '\n' + line3 + '\n')
+# and an alternative method which puts each line within quotes
+## target.write('%r\n%r\n%r\n' % (line1, line2, line3))
+
+#Now read the file using module 16a. NOT WORKING. Call fileread.py manually
+## fileread16a.read(target)
+
+# self explanatory...close the file
+# important to .close as this sets the proper file attributes.
+print("And finally, we close the file.")
+target.close
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX16A.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Reading and writing files
+# Part2. This script reads the file created in ex16.
+# Part2 is run manually/separtely after script 16 has set up test.txt file.
+
+# import the arguments variable
+## from sys import argv
+
+# set the script and filename arguments
+## script, filename = argv
+
+## target_read = open(filename)
+## print(target_read.read())
+
+## target_read.close
+
+#Part3 acts as a funtion to be called from ex16.
+def read(filename)
+    return target_read = open(filename)
+    print(target_read.read())
+    target_read.close
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX17.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# More Files: Reading and writing files
+# Commands to remember:
+    # close: Closes the file, like File > Save... in your editor.
+    # read: Reads the contents of the file. You can assign the result to a variable.
+    # readline: Reads just one line of a text file.
+    # truncate: Empties the file. Wach out if you care about the file.
+    # write('stuff'): Writes "stuff" to the file.
+    # seek(0): Moves the read/write location to the begnning of the file.
+
+# import the arguments variable and the file read module 16a
+from sys import argv
+from os.path import exists # reurns TRUE if a file exists
+
+# set the script and filename arguments
+script, from_file, to_file = argv
+
+# we could do these next two lines in one line, how?
+in_file = open(from_file)
+indata = in_file.read()
+
+# Initial program user info and directions.
+print(f"The input file is {len(indata)} bytes long.")
+
+print(f"Does the output file exist? {exists(to_file)}")
+###print("Ready, hit ENTER to continue, CTRL-C to abort.") ### this line moved to the input statement.
+
+# Awaits user decision, displays nothing () or whatever is in the brackets (Reay, hit ...).
+###input()
+input("Ready, hit ENTER to continue, CTRL-C to abort.")
+
+# open out_file for writing indata to it
+out_file = open(to_file, 'w')
+out_file.write(indata)
+
+print("Alright, all done.")
+
+# self explanatory...close both files
+# important to .close as this sets the proper file attributes.
+in_file.close()
+out_file.close()
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX18.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Names, Variables, Code, Functions
+# Functions do 3 things, they
+    # name pieces of Code the way variables name strings and numbers
+    # take arguments the way scripts take argv
+    # let you make your own "mini commands" using these first 2 things
+
+# this function is like scripts with argv
+def print_two(*args):
+    arg1, arg2 = args
+    print(f"arg1: {arg1}, arg2: {arg2}")
+
+# ok that args is actually pointless, we can do this
+def print_two_again(arg1, arg2):
+    print(f"arg1: {arg1}, arg2: {arg2}")
+
+# this takes one argument
+def print_one(arg1):
+    print(f"arg1: {arg1}")
+
+# this takes no arguments
+def print_none():
+    print("I got nothin'.")
+
+print_two("Jim", "Hannaway")
+print_two_again("James", "Hannaway")
+print_one("FirstArg")
+print_none()
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX19.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Functions & Variables
+# Functions do 3 things, they
+    # name pieces of Code the way variables name strings and numbers
+    # take arguments the way scripts take argv
+    # let you make your own "mini commands" using these first 2 things
+
+""" This shows all different ways to pass values into our
+    cheese_and_crackers function. We can pass in straight numbers,
+    variables, maths calculations, even math calculations and variables together """
+
+# Define the function 'cheese_and_crackers' to take in two values; cheese_count and boxes_of_crackers
+# Then print out the values passed into the function with sme text around them t give context and meaning.
+def cheese_and_crackers(cheese_count, boxes_of_crackers):
+    print(f"You have {cheese_count} cheeses!")
+    print(f"You have {boxes_of_crackers} boxes of crackers!")
+    print("Man that's enough for a party!")
+    print("Get a blanket. \n")
+
+# Pass two values directly into the cheese_and_crackers function
+print("We can just give the funtion numbers directly:")
+cheese_and_crackers(20, 30)
+
+# Create two other variables amount_of_cheese and amount_of_crackers,
+# assign values to them and an pass them into the cheese_and_crackers function.
+print("OR we can use variables from our script.")
+amount_of_cheese = 10
+amount_of_crackers = 50
+
+cheese_and_crackers(amount_of_cheese, amount_of_crackers)
+
+# Run cheese_and_crackers function with values created from calculations inside the function
+print("We can even do math inside too:")
+cheese_and_crackers(10 + 20, 5 + 6)
+
+# Call (run) cheese_and_crackers with its passed in values created from
+# a combination of existing variables with a math calculation
+print("And we can combine the two, variable and math:")
+cheese_and_crackers(amount_of_cheese + 100, amount_of_crackers + 1000)
+
+count = 0
+
+def function_ten_ways(numbers, letters):
+    print(count)
+    print(f"The numbers are {numbers} and the letters are {letters}.")
+
+# 1st around
+count = count + 1
+function_ten_ways(0, "No letter")
+print("No values passed this time! Doesn't work so passed in values directly!")
+
+# 2nd call
+count = count + 1
+function_ten_ways(1, "A")
+print("One value passed this time!")
+
+# 3rd call
+count = count + 1
+function_ten_ways(1+1, "A"+"B")
+print("Added values and strings passed this time!")
+
+# 4th call
+count = count + 1
+function_ten_ways("1"+"1"+"2", "A"+"B"+"C")
+print("Added strings passed as values this time!")
+
+# 5th Call
+amount_of_numbers = 10
+amount_of_letters = 26
+count = count + 1
+function_ten_ways(amount_of_numbers, amount_of_letters)
+print("Two new varaibles passed this time!")
+
+# 6th Call
+count = count + 1
+function_ten_ways(amount_of_numbers *2 , amount_of_letters *2)
+print("Two variables inclusing arithmetic operations passed this time!")
+
+# 7th Call
+count = count + 1
+function_six = function_ten_ways
+function_six(amount_of_numbers, amount_of_letters)
+print("Asssign the function to a variable and call it again! Jeez it works")
+
+# 8th Call
+count = count + 1
+function_six = function_ten_ways
+new_list = (55, "ABCDE")
+function_six(*new_list)
+print("Asssign the function to a variable with a variable number of arguments as in *args. Yip. Works!")
+
+# 9th call
+count = count + 1
+def function_seven():
+    letters1 = "JHFH"
+    numbers1 = 1509
+    function_ten_ways(numbers1, letters1)
+    print("Create a new function using the original function with new values and call the new function")
+function_seven()
+
+# 10th call
+count = count + 1
+def function_seven():
+    letters1 = "XJHFHX"
+    return letters1
+
+def function_eight():
+    numbers1 = "X" + 1509 + "X"
+    return numbers1
+
+function_ten_ways(function_seven, function_eight)
+print("Create a new function pasing in two functions.")
+
+
+# 11th call
+count = count + 1
+numbers2 = input("Input numbers: ")
+letters2 = input("Input letters: ")
+function_ten_ways(numbers2, letters2)
+print("Call the function using user input as values.")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX2.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# A comment, this is so you can read the program later.
+# Anything after the # is ignored by python.
+
+print("I could have code like this.") # and the comment after is ignored
+
+# You can also use a # to dsable or comment out code
+# print("This won't run.")
+
+print("This will run.")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX20A.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# File seek
+""" This shows file seek working.
+    This example is fromhttps://code-maven.com/python-seek
+
+    examples/python/seek.py """
+
+import os
+
+filename = 'dataseek.txt'
+with open(filename, 'w') as fh:
+    fh.write("Hello World!\nHow are you today?\nThank you!")
+
+print(os.path.getsize(filename))  # 44
+
+with open(filename) as fh:
+    print(fh.tell())        # 0
+    row = fh.readline()
+    print(row)              # Hello World!
+    print(fh.tell())        # 14
+
+#    fh.seek(-7, os.SEEK_END) # Back seek disabled in python3.
+    fh.seek(6, os.SEEK_SET)
+    print(fh.tell())        # 6
+
+    row = fh.readline()
+    print(row)              # World!
+    print(fh.tell())        # 14
+
+    fh.seek(0, os.SEEK_SET)
+    print(fh.tell())        # 0
+    print(fh.read(5))       # Hello
+
+    fh.seek(40, os.SEEK_SET)
+    print(fh.tell())        # 40
+    print(fh.read())        # you!
+    print(fh.tell())        # 44
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX21.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Functions Can REturn Something
+""" This shows use of return to set variables from the output of functions"""
+
+def add(a,b):
+    print(f"ADDING {a} + {b}")
+    return a + b
+
+def subtract(a,b):
+    print(f"SUBTRACTING {a} - {b}")
+    return a - b
+
+def multiply(a,b):
+    print(f"MULTIPLYING {a} * {b}")
+    return a * b
+
+def divide(a,b):
+    print(f"DIVIDING {a} / {b}")
+    return a / b
+
+print("Let's do some math with just functions")
+
+age = add(50, 5)
+height = subtract(72, 4)
+weight = multiply(95, 2)
+iq = divide(230, 2)
+
+print(f"Age: {age}, Height: {height}, weight: {weight}, IQ: {iq}.")
+
+# A puzzle for the extra credit, type it in anyway!
+print("Here is a puzzle.")
+
+what = add(age, subtract(height, multiply(weight, divide(iq,2))))
+print("That becomes: ", what, "Can you do it by hand?")
+print("Yes. You must work right to left, calculating each function as you go.")
+print("Then passing the result into the function immediately to its left. BooM!\n")
+
+what2 = age + (height - (iq/2)*weight)
+print("Resulting formula becomes age + (height - (iq/2)*weight)) = ", what2)
+
+print("Let's try to make it a positive result with a different formula.")
+what3 = (age / height) * (weight + iq)
+print(what3)
+
+what4 = multiply(divide(age,height),add(weight,iq))
+print(f"Proving that {what3} does equal {what4}")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX22.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# File aggregation
+""" This script reads through the lpthw directory
+    and appends each script to a new file """
+
+import os
+import sys
+import glob
+
+
+# Set path to the current directory and print it out.
+path = os.getcwd()
+print(f"Current directory is: {path}")
+
+# Get all the files in that directory and print a sample of their names
+files = os.listdir(path)
+print("Files in '%s': %s" % (path, files))
+print(files[0], files[3], files[5])
+
+##pyfiles = []
+##for file in glob.glob("*.py"):
+##    pyfiles.append(file)
+##print(f"This is pyfiles list: {pyfiles}")
+
+mylist = [f for f in glob.glob("*.py")]
+#remove the last item in the list
+# mylist.pop()
+# remove ex20.py which requires a filename input as an argv parameter
+del mylist[14]
+print(f"This is the list called mylist: {mylist}")
+
+#walk through all files in current directory
+#path = 'C:\Users\Jim\Documents\Python Scripts\lpthw'
+
+print("OPENING AGGREGATE FILE.")
+fh = open('PythonAggregates1.txt', 'a')
+
+for filename in mylist:
+    try:
+        fR = open(filename, "r")
+        print(f"Opening: {filename}")
+    except IOError:
+        print("Could not open File: " + filename)
+        sys.exit()
+
+    try:
+        fh.write("\n*-*-*-*-*-*-*-*-*-*-*-*-*\n")
+        fh.write(filename.upper())
+        fh.write("\n*-*-*-*-*-*-*-*-*-*-*-*-*\n\n")
+        for x in fR.readlines():
+            fh.write(x)
+    except IOError:
+        print("Could not write file: " + filename)
+        sys.exit()
+
+
+    fR.close()
+    print("close fileRead")
+fh.close()
+print("close fileWrite")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX3.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Numbers & Math
+
+print("I will now count chickens:")
+
+# No of hens is 25 plus (30/6=5) which is 30 in total
+# Order of math calculates 30/6 first
+print("Hens", 25 + 30 / 6)
+
+# No of cocks is 100 minus (remainder of (25*3)/4
+# So as 3 is the remainder of 75/4
+# Order of match calcuates remainder of 75/4=3 first
+# Then the result is 100 - 3.
+print("Cocks", float(100 - 25 * 3 % 4)) # using float to ensure type is set for this calc
+print(3 % 4)
+
+# Order of math is PEMDAS (left to right order of math operations: Parentheses, Exponents, Multiply, Divide, Add, Subtract
+# Can be thought of as PE(M&D)(A&S)
+# Order of math is therefore (4%2=0), (1/4=0.25), then (3+2+1-5+(0)-(0.25)+6)
+# Result is 6.75
+print("Now I will count the eggs:")
+print(3 + 2 + 1 - 5 + 4 % 2 - 1 / 4 + 6)
+
+# Boolean comparison of (3 + 2) being > (5 - 7) gives false
+print("Is it true that 3 + 2 < 5 - 7?")
+print(3 + 2 < 5 - 7)
+
+print("What is 3 + 2?", 3 + 2)
+print("What is 5 - 7?", 5 -7)
+
+print("Oh, that's why its false")
+
+# Additional Calculation
+print("Calculate the number of seconds in half a day:")
+print("60 seconds in a minute:", 60, "seconds in a minute")
+print("60 minutes in an hour:", 60 * 60,  "seconds in an hour")
+print("There are 24 hours in a day so half a day is 12 hours which is:", 60 * 60 *12, "seconds in a half day")
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX4.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Set no of cars to 100
+cars = 100
+# Set no of seats in a car.
+# Use float type as there may be half seats (eg luggage) affecting total capacity
+space_in_a_car = 4.0
+# Set the number of driver
+drivers = 30
+#Set the number of passengers
+passengers = 90
+# Calculate the numbr of cars that can be driven / not driven
+cars_not_driven = cars - drivers
+cars_driven = drivers
+# Calcate the car pool capacity and the average passengers per car
+carpool_capacity = cars_driven * space_in_a_car
+average_passengers_per_car = passengers / cars_driven
+
+print("There are", cars, "cars available.")
+print("There are only", drivers, "drivers available.")
+print("There will be", cars_not_driven, "empty cars today.")
+print("We can transport", carpool_capacity, "people today.")
+print("We have", passengers, "people to carpool today.")
+print("We need to put about", average_passengers_per_car, "in each car.")
+
+# Completed the following in Powershell Terminal: Type python enter
+i = 6
+x = 2
+j = 4
+
+print(i)
+print(i,j,x)
+print(j ** x)
+print(j ** x / i)
+i == j # False
+i == j == x # False
+i % j == x # True
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX5.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+name = 'Jimmy Hannaway'
+age = 55 #not a lie
+height = 68 #inches
+weight = 196 #lbs
+eyes = 'blue'
+teeth = 'white-ish'
+hair = 'brown'
+cm = height * 2.54
+kg = weight / 2.2046
+
+print (f"Let's talk about {name}.")
+print (f"He's {age} years old and {height} inches tall.")
+print (f"He's {weight} pounds heavy.")
+print (f"So in metric he is {cm:.1f}cm tall and {kg:.1f}kg heavy." )
+print ("Actually that's a bit overweight!")
+print (f"He's got {eyes} eye and {hair} hair.")
+print (f"His teeth are usually {teeth} depending on the coffee.")
+
+# this line is tricky so try to get it exactly right
+total = age + height + weight
+print (f"If I add {age}, {height} and {weight} I get {total}.")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX6.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Define x as the variable formatted by using
+# some text containing another variable called types_of_people.
+types_of_people = 10
+x = f"There are {types_of_people} types of people"
+
+# Define y as the variable formatted by using
+# some text containing another wo variables
+# called binary and do_not.
+binary = "binary"
+do_not = "don't"
+y = f"Those who know {binary} and those who {do_not}."
+
+print(x)
+print(y)
+
+# Now print two strings containing some text and a variable.
+# One string containing variable x and the other variable y.
+print(f"I said: {x}")
+print(f"I also said: '{y}'")
+
+# Set the variable hilarious to false and set the variable
+# joke_evaluation to some text plus blank format variable.
+# then print the joke_evaluation variable
+# and amend the format using hilarious to add False at the end of the string.
+hilarious = False
+joke_evaluation = "Isn't that joke so funny?! {}"
+print(joke_evaluation.format(hilarious))
+
+# Show that two string variables are concatenated uing the plus sign
+w = "This is the left side of ..."
+e = "a string with a right side."
+
+print (w + e)
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX7.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Printing out a nursery rhyme making use of these brackets{} and formatting
+# to complete the rhyme.
+print("Mary had a little lamb.")
+print("It's fleece was white as {}.".format('snow'))
+print("And everywhere that Mary went.")
+
+# Inserting 10 dots in a line
+print("." * 10) # what'd that do?
+
+# Setting up the end variables to spell out Cheese burger when printed
+end1 = "C"
+end2 = "h"
+end3 = "e"
+end4 = "e"
+end5 = "s"
+end6 = "e"
+end7 = "b"
+end8 = "u"
+end9 = "r"
+end10 = "g"
+end11 = "e"
+end12 = "r"
+
+# watch end = '' at the end. Try removing it to see what happens.
+# ... of course the space gets removed but it also prints burger on a new line!
+print (end1 + end2 + end3 + end4 + end5 + end6,end = ' ')
+print(end7 + end8 + end9 + end10 + end11 + end12)
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX8.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Define the variable formatter
+formatter = "{} {} {} {}"
+
+# Print the variable formatter, each time passing in four different arguments
+print(formatter.format(1, 2, 3, 4))
+print(formatter.format("one", "two", "three", "four"))
+print(formatter.format(True, False, False, True))
+print(formatter.format(formatter, formatter, formatter, formatter))
+# Print the variable formatter with on-the-fly text string as arguments
+print(formatter.format(
+    "Try your",
+    "Own text here",
+    "Maybe a poem",
+    "Or a song about fear."
+))
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+EX9.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Some strange new stuff, type it exactly!
+
+days = "Mon Tue Wed Thu Fri Sat Sun"
+months = "\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug"
+
+print("Here are the days: ", days)
+print("Here are the months: ", months)
+
+print("""
+There's something going on here.
+With these three double quotes.
+We'll be able to type as much as we like.
+Even 4 lines if we want, or 5, or 6.
+""")
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+FILEREAD16A.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# Reading and writing files
+# Part2. This script reads the file created in ex16. WORKS OK.
+# Part2 is run manually/separtely after script 16 has set up test.txt file.
+
+# import the arguments variable
+from sys import argv
+
+# set the script and filename arguments
+script, filename = argv
+
+target_read = open(filename)
+print(target_read.read())
+
+target_read.close
+
+#Part3 acts as a function to be called from ex16. NOT WORKING
+# def read(filename)
+#    return target = open(filename)
+#    print(target.read())
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+SELENIUM_DEMO.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+import selenium
+import webdriver
+import Keys
+
+class Helper:
+
+    self.driver = webdriver.Chrome()
+
+    def open_youtube(self):
+
+        driver.getUrl("https://www.youtube.com/")
+        search_bar = driver.find_element(By.ID, "search")
+        search_bar.send_keys("Golf")
+        search_bar.send_keys(Keys.RETURN)
+
+if __name__ == "__main__":
+    Helper()
+
+*-*-*-*-*-*-*-*-*-*-*-*-*
+ZEX22.PY
+*-*-*-*-*-*-*-*-*-*-*-*-*
+
+# File aggregation
+""" This script reads through the lpthw directory
+    and appends each script to a new file """
+
+import os
+import sys
+import glob
+
+
+# Set path to the current directory and print it out.
+path = os.getcwd()
+print(f"Current directory is: {path}")
+
+# Get all the files in that directory and print a sample of their names
+files = os.listdir(path)
+print("Files in '%s': %s" % (path, files))
+print(files[0], files[3], files[5])
+
+##pyfiles = []
+##for file in glob.glob("*.py"):
+##    pyfiles.append(file)
+##print(f"This is pyfiles list: {pyfiles}")
+
+mylist = [f for f in glob.glob("*.py")]
+mylist.pop()
+# del mylist[17]
+print(f"This is the list called mylist: {mylist}")
+
+#walk through all files in current directory
+#path = 'C:\Users\Jim\Documents\Python Scripts\lpthw'
+
+print("OPENING AGGREGATE FILE.")
+fh = open('PythonAggregates.txt', 'a')
+
+for filename in mylist:
+    try:
+        fR = open(filename, "r")
+        print(f"Opening: {filename}")
+    except IOError:
+        print("Could not open File: " + filename)
+        sys.exit()
+
+    try:
+        fh.write("\n*-*-*-*-*-*-*-*-*-*-*-*-*\n")
+        fh.write(filename.upper())
+        fh.write("\n*-*-*-*-*-*-*-*-*-*-*-*-*\n\n")
+        for x in fR.readlines():
+            fh.write(x)
+    except IOError:
+        print("Could not write file: " + filename)
+        sys.exit()
+
+
+    fR.close()
+    print("close fileRead")
+fh.close()
+print("close fileWrite")

@@ -1,0 +1,3 @@
+Python .write command
+modified to a single line
+from six lines of code.
