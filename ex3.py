@@ -13,7 +13,7 @@ print("Hens", 25 + 30 / 6)
 print("Cocks", float(100 - 25 * 3 % 4)) # using float to ensure type is set for this calc
 print(3 % 4)
 
-# Order of math is PEMDAS (left to right order of math operations: Parentheses, Exponents, Multiply, Divide, Add, Subtract
+# Order of math is PEMDAS (left to right order of math operations: Parentheses, Exponents, Multiply, Divide, Add, Subtract)
 # Can be thought of as PE(M&D)(A&S)
 # Order of math is therefore (4%2=0), (1/4=0.25), then (3+2+1-5+(0)-(0.25)+6)
 # Result is 6.75
@@ -34,3 +34,5 @@ print("Calculate the number of seconds in half a day:")
 print("60 seconds in a minute:", 60, "seconds in a minute")
 print("60 minutes in an hour:", 60 * 60,  "seconds in an hour")
 print("There are 24 hours in a day so half a day is 12 hours which is:", 60 * 60 *12, "seconds in a half day")
+
+# check spelling on comments and modify the file upload title
