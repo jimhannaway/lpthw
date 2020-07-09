@@ -33,3 +33,5 @@ print(j ** x / i)
 i == j # False
 i == j == x # False
 i % j == x # True
+
+# learning review completed
