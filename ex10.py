@@ -63,3 +63,5 @@ print("\067 it's a seven") # octal value for 7
 print("\v shold be vertical tab now!") # vertical tab
 
 print("Not covered in glory here.\n\nNot sure I am getting a good understanding!")
+
+# learning review completed
